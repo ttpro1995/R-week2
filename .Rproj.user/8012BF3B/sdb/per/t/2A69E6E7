@@ -1,0 +1,17 @@
+{
+    "contents" : "#Thai Thien\n\ncorr <- function(directory, threshold = 0){\n  \n  \n \n  id =1:332\n#find valid id\ncm<-complete(directory,id)\ncm<-subset(cm,nobs>threshold)#id with nobs more that threshold\ncm\nid<-as.vector(cm[[\"id\"]])\nid\n#cor\ncorr_vector<-NULL#init corr_vector\nfor (i in id)\n{\n  table<-singleID(i,directory)\n  tmp<-cor(table$sulfate,table$nitrate,use=\"complete.obs\")\n  corr_vector<-cbind(corr_vector,tmp)\n}\n  ret<-as.vector(corr_vector)\nret\n\n}\n\n\nsingleID <- function(num,directory) {\n  f<-paste(directory,\"/\",sep=\"\")\n  \n  name<- as.character(num)\n  if (num<10)\n    name<-paste(\"00\",name,sep=\"\")\n  \n  if (num>=10&num<=99)\n    name<-paste(\"0\",name,sep=\"\")\n  \n  name<-paste(name,\".csv\",sep=\"\")\n  name<-paste(f,name,sep=\"\")\n  \n  name##name of csv file\n  \n  data<-read.csv(name)\n  data## a data frame\n  \n  \n  \n  \n  \n  \n}",
+    "created" : 1421552340727.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4007721420",
+    "id" : "2A69E6E7",
+    "lastKnownWriteTime" : 1421556053,
+    "path" : "~/Rproject/Assignment1/corr.R",
+    "project_path" : "corr.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

@@ -1,0 +1,17 @@
+{
+    "contents" : "#Thai Thien\n\ncomplete<- function(directory, id = 1:332)\n{\n  ##working on this\n  #http://stackoverflow.com/questions/23190280/issue-in-loading-multiple-csv-files-into-single-dataframe-in-r-using-rbind\n  \n  table <-NULL\n  ret<-NULL\n  \n  for (i in id)\n  {\n    table<-pollutantmeansteptwo(i,directory)\n    NNod<-cases(table)\n    IId<-i\n    dataline<-cbind(IId,NNod)\n    ret<-rbind(ret,dataline)\n  }\n ret<-as.data.frame(ret)\n  names(ret)[names(ret)==\"IId\"] <- \"id\"\n  names(ret)[names(ret)==\"NNod\"] <- \"nobs\"\n ret#return \n}\n\ncases<-function(table)#num of case for id\n{\n  sul<-as.vector(table[[\"sulfate\"]])\n  nit<-as.vector(table[[\"nitrate\"]])\n  count<-0;\n  for (i in seq_along(sul))\n  {\n    if (is.na(sul[i])==FALSE & is.na(nit[i])==FALSE)\n    count<-count+1\n      \n    \n      \n  }\n  count#number of complete case\n  \n}\n\npollutantmeansteptwo <- function(num,directory) {\n  f<-paste(directory,\"/\",sep=\"\")\n  \n  name<- as.character(num)\n  if (num<10)\n    name<-paste(\"00\",name,sep=\"\")\n  \n  if (num>=10&num<=99)\n    name<-paste(\"0\",name,sep=\"\")\n  \n  name<-paste(name,\".csv\",sep=\"\")\n  name<-paste(f,name,sep=\"\")\n  \n  name##name of csv file\n  \n  data<-read.csv(name)\n  data## a data frame\n  \n  \n  \n  \n  \n  \n}\n",
+    "created" : 1421546430276.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "562041964",
+    "id" : "A1E8D844",
+    "lastKnownWriteTime" : 1421556052,
+    "path" : "~/Rproject/Assignment1/complete.R",
+    "project_path" : "complete.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}

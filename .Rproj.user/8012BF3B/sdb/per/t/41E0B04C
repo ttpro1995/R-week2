@@ -1,0 +1,17 @@
+{
+    "contents" : "#Thai Thien\n\npollutantmean<- function(directory, pollutant, id = 1:332)\n{\n  ##working on this\n  #http://stackoverflow.com/questions/23190280/issue-in-loading-multiple-csv-files-into-single-dataframe-in-r-using-rbind\n \n  table <-NULL\n  \n  \n  for (i in id)\n  {\n  table<-rbind(table,pollutantmeansteptwo(i,directory))\n  }\n  table\n  \n  vec<-as.vector(table[[pollutant]])\n  meanvalue<-mean(vec,na.rm=TRUE)\n  meanvalue\n}\n\npollutantmeansteptwo <- function(num,directory) {\n  f<-paste(directory,\"/\",sep=\"\")\n  \n  name<- as.character(num)\n  if (num<10)\n    name<-paste(\"00\",name,sep=\"\")\n  \n  if (num>=10&num<=99)\n    name<-paste(\"0\",name,sep=\"\")\n  \n  name<-paste(name,\".csv\",sep=\"\")\n  name<-paste(f,name,sep=\"\")\n  \n  name##name of csv file\n  \n  data<-read.csv(name)\n  data## a data frame\n  \n \n  \n  \n\n  \n}\n\n",
+    "created" : 1421495633650.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2266740952",
+    "id" : "41E0B04C",
+    "lastKnownWriteTime" : 1421556052,
+    "path" : "~/Rproject/Assignment1/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : true,
+    "type" : "r_source"
+}
